@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="form-container">
+    <div class="header-text">Sign up for free</div>
+    <div class="google-button">
+      <button class="button" (click)="googleRegistration()">Sign Up with Google</button>
+    </div>
+    <div class="form-text">Or sign up with email</div>
+    <form class="form" name="form" #form="ngForm" (ngSubmit)="register(form.value)">
+      <label for="email" class="label">Email Address </label>
+      <input ngModel #email="ngModel" type="email" [email]="true" name="email" required placeholder="elon@tesla.com" />
+
+      <label for="name" class="label">Password </label>
+      <input ngModel #password="ngModel" type="password" name="password" required placeholder="password" />
+     
+      <div class="alert alert-danger" *ngIf="(email.touched && !email.valid) || (password.touched && !password.valid)">Please enter valid email and password</div>
+
+      <button type="submit" [disabled]="!form.valid" name="button">Get Started</button>
+
+    </form>
+    <div class="have-account">
+      Already have an account?
+      <span><a [routerLink]="[ '/login']">Log in</a></span>
+    </div>
+  </div>
+</div>
