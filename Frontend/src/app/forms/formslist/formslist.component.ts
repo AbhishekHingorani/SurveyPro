@@ -18,9 +18,6 @@ export class FormslistComponent implements OnInit {
     this.httpService.getFormsList().subscribe(
       (response: any[]) => {
         this.forms = response;
-      }, 
-      (error) => {
-        Swal.fire('Error', 'Error loading forms list', 'error');
       }
     );
   }
