@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   login(creds) {
     this.auth.login(creds).subscribe(
       (response) => {
-        console.log(response);
         this.auth.saveTokenAndNavigate(response);
       },
       (error) => {

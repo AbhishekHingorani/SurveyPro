@@ -59,7 +59,7 @@ export class AuthService {
   saveTokenAndNavigate(tokenData) {
     this.setLocalStorage(tokenData);
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-    this.router.navigate(['formslist']);
+    this.router.navigate(['forms/list']);
   }
 
   setLocalStorage(responseObj) {

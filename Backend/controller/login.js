@@ -19,8 +19,6 @@ router.get('/login/google/callback', passport.authenticate('google', {failureRed
         token: issueJWT(req.user)
     }));
     res.status(200).send(responseHTML);
-
-    //res.send(issueJWT(req.user));
 });
 
 router.get('/login/fail', (req, res, next) => {

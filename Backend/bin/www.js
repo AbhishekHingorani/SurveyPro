@@ -3,7 +3,6 @@ const http = require("http");
 let { port } = require('../config/config');
 
 port = normalizePort(port);
-console.log(port);
 app.set('port', port || 3000);
 
 const server = http.createServer(app);

@@ -1,0 +1,40 @@
+<div class="float-right col-12">
+  <a
+    class="btn btn-danger btn-lg my-2 my-sm-0 float-right"
+    type="submit"
+    [routerLink]="['../create']"
+  >
+    Create New Form
+  </a>
+</div>
+
+<ng-container *ngIf="forms.length > 0; else elseTemplate">
+  <div class="col-8 px-md-5">
+    <table class="table">
+      <thead>
+        <th>Form Title</th>
+        <th>Responses</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let form of forms">
+          <td>{{ form.title }}</td>
+          <td>
+            <button
+            class="btn btn-success my-2 my-sm-0 float-right"
+              (click)="redirectToFromResponses(form.FormId)"
+            >
+              Responses
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <h4 class="ml-5 text-muted">There are no forms to display. Create New forms!</h4>
+</ng-template>
+
+
+
+

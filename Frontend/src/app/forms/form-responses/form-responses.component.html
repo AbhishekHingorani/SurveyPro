@@ -1,0 +1,43 @@
+<div class="ml-3">
+  <div *ngIf="title && title.length > 0">
+    <h3>{{ title }}</h3><br><br>
+  </div>
+
+  <div *ngIf="responses && responses.length > 0">
+    <div *ngFor="let response of responses; let i = index">
+      <strong>Ques {{ i + 1 }}. </strong>{{ response.quesTitle }}
+      <div
+        class="ml-3"
+        *ngIf="response.quesOptions && response.quesOptions.length > 0"
+      >
+        <strong>Options:</strong>
+        <ul class="ml-5">
+          <li *ngFor="let opt of response.quesOptions">
+            {{ opt }}
+          </li>
+        </ul>
+      </div>
+      <div
+        class="col-5"
+        *ngIf="response.quesAnswer && response.quesAnswer.length > 0"
+      >
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Answers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ans of response.quesAnswer; let i=index;">
+              <th scope="row">{{ i+1 }}</th>
+              <td>{{ ans }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr />
+    </div>
+  </div>
+</div>

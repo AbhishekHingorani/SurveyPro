@@ -51,7 +51,6 @@ passport.use('register', new LocalStrategy(
         connection.query('INSERT INTO Users SET ?', data, (error, results, fields) => {
           if (error) throw error;
           data.UserId = results.insertId;
-          console.log("Data Id:::", results);
           return done(null, data);
         });
       }
@@ -72,10 +71,8 @@ const options = {
 
 // The JWT payload is passed into the verify callback
 passport.use('jwt', new JwtStrategy(options, function(jwt_payload, done) {
-  console.log("JWT_PAYLOAD::::" , jwt_payload);  
   // We will assign the `sub` property on the JWT to the database ID of user
    connection.query('SELECT UserId, Email FROM Users WHERE UserId = '+ jwt_payload.id, function(err, results, fields) {
-    console.log("RES::::" , results);  
         const user = results[0];
         // This flow look familiar?  It is the same as when we implemented
         // the `passport-local` strategy
@@ -115,7 +112,6 @@ passport.use('google', new GoogleStrategy( googleOpts, function(token, tokenSecr
           connection.query('INSERT INTO Users SET ?', data, (error, results, fields) => {
             if (error) throw error;
             data.UserId = results.insertId;
-            console.log("Data Id:::", results);
             return done(null, data);
           });
       }

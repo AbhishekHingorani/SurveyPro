@@ -7,15 +7,15 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { LoginComponent } from './authentication/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormslistComponent } from './formslist/formslist.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    FormslistComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+  <div class="col-12">
+    <a class="navbar-brand" [routerLink]="['/']">SurveyPro</a>
+    
+    <button
+      class="btn btn-outline-danger my-2 my-sm-0 float-right ml-3"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+    <button
+      class="btn btn-outline-success my-2 my-sm-0 float-right"
+      (click)="about()"
+    >
+      About
+    </button>
+    
+  </div>
+</nav>
+<br /><br />
+
+<router-outlet></router-outlet>

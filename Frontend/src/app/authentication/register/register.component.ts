@@ -16,10 +16,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(creds) {
-    console.log(creds);
     this.auth.register(creds).subscribe(
       (response) => {
-        console.log(response);
         this.auth.saveTokenAndNavigate(response);
       },
       (error) => {

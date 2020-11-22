@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const handler404 = require('./middleware/handle404');
 const errorHandler = require('./middleware/error-handler');
 const healthcheck = require('./controller/healthcheck');
-const user = require('./controller/user');
+const form = require('./controller/form');
 const passport = require('./config/passport');
 const login = require('./controller/login');
 var cors = require('cors');
@@ -18,7 +18,7 @@ app.use(healthcheck);
 app.use(cors({origin: 'http://localhost:4200'}));
 app.use(passport.initialize());
 app.use(login);
-app.use(user);
+app.use(form);
 app.use(handler404);
 app.use(errorHandler);
 
