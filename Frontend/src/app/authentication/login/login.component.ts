@@ -8,21 +8,20 @@ import Swal from 'sweetalert2'
   templateUrl: './login.component.html',
   styleUrls: ['../authentication.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(
     public auth: AuthService
   ) { }
 
-  ngOnInit(): void {
-  }
-
   login(creds) {
+    // Local Authentication
     this.auth.login(creds).subscribe(
       (response) => {
         this.auth.saveTokenAndNavigate(response);
       },
       (error) => {
+        // Showing error if login fails
         Swal.fire({
           icon: 'error',
           title: 'Unauthorized',
@@ -38,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin() {
+    // Google login
     this.auth.googleAuthentication();
   }
 }

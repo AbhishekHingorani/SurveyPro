@@ -15,6 +15,7 @@ export class FormslistComponent implements OnInit {
   constructor(public router: Router, public activatedRoute: ActivatedRoute,public httpService: HttpRequestsService) { }
 
   ngOnInit(): void {
+    // get all the forms of current user.
     this.httpService.getFormsList().subscribe(
       (response: any[]) => {
         this.forms = response;
@@ -22,6 +23,7 @@ export class FormslistComponent implements OnInit {
     );
   }
 
+  // Redirect to responses page of selected form.
   redirectToFromResponses(formId) {
     this.router.navigate(['../'+formId+'/responses'], {relativeTo: this.activatedRoute});
   }

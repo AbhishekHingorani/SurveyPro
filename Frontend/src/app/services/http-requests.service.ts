@@ -16,10 +16,12 @@ export class HttpRequestsService {
 
   constructor(private http: HttpClient) {}
   
+  // API to get form list.
   getFormsList() {
     return this.http.get(this.baseUrl + 'forms');
   }
 
+  // API to create form.
   createForm(formData: any) {
     return this.http.post(
       this.baseUrl + 'form',
@@ -28,10 +30,12 @@ export class HttpRequestsService {
     );
   }
 
+  // API to get form questions.
   getFormQuestions(formId: number) {
     return this.http.get(this.baseUrl + 'form/' + formId);
   }
 
+  // API to submit form data.
   submitForm(formData) {
     return this.http.post(
       this.baseUrl + 'answers',
@@ -40,6 +44,7 @@ export class HttpRequestsService {
     )
   }
 
+  // API to get form answers/responses.
   getFormResponses(formId: string) {
     return this.http.get(this.baseUrl + 'form/' + formId + '/answers');
   }

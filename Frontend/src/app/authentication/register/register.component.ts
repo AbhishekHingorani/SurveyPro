@@ -8,19 +8,19 @@ import Swal from 'sweetalert2'
   templateUrl: './register.component.html',
   styleUrls: ['../authentication.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   constructor(public auth: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
-
+  // Local Registration
   register(creds) {
     this.auth.register(creds).subscribe(
       (response) => {
+        // Save token and redirect if login successful.
         this.auth.saveTokenAndNavigate(response);
       },
       (error) => {
+        // Show error if registration fails.
         Swal.fire({
           icon: 'error',
           title: 'Error',
@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   }
 
   googleRegistration() {
+    // Registration using google.
     this.auth.googleAuthentication();
   }
 

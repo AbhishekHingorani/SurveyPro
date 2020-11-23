@@ -21,10 +21,12 @@ export class FormResponsesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Getting form id from URL parameters
     this.route.paramMap.subscribe((params) => {
       this.formId = params.get('formId');
     });
 
+    // Calling API to get all the responses of the form.
     this.httpRequest.getFormResponses(this.formId).subscribe(
       (response) => {
         this.title = response["title"];

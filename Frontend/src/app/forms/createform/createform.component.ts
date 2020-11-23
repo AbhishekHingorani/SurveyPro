@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   templateUrl: './createform.component.html',
   styleUrls: ['./createform.component.scss'],
 })
-export class CreateformComponent implements OnInit {
+export class CreateformComponent {
   quesType: number = 0;
   title = '';
   quesText = '';
@@ -19,23 +19,27 @@ export class CreateformComponent implements OnInit {
 
   constructor(public httpRequests: HttpRequestsService) {}
 
-  ngOnInit(): void {}
-
+  // If input type is checkbox or radio button, this method will add 
+  // the options added by user to the options array.
   addOption() {
     if (this.optionVal && this.optionVal.length > 0) {
       if(this.options.indexOf(this.optionVal) == -1)
         this.options.push(this.optionVal);
       else {
+        // If same option was already added previously, throw error.
         this.showError('Option Already Exists');
       }
+      // Reset the option value after adding.
       this.optionVal = '';
     }
   }
 
+  // Delete the option from options array.
   deleteOption(option) {
     this.options = this.options.filter(val => val != option);
   }
 
+  // Add the question to questions array.
   addQuestion(){
     if(this.quesText === '') {
       this.showError('Please enter Question text');
@@ -55,9 +59,11 @@ export class CreateformComponent implements OnInit {
       "quesOptions":this.options
     }
     this.questions.push(ques);
+    // After question is added, clearing the questions field.
     this.clearFields();
   }
 
+  // Call api to create form.
   createForm() {
     if(this.title === '') {
       this.showError('Please enter form title');
@@ -92,12 +98,14 @@ export class CreateformComponent implements OnInit {
     )
   }
 
+  // Clear all questions fields.
   clearFields() {
     this.quesText = '';
     this.quesType = 0;
     this.options = [];
   }
 
+  // Show Sweet Alert Error toast with specified message.
   showError(msg: string) {
     Swal.fire({
       icon: 'error',

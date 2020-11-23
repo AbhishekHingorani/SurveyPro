@@ -1,10 +1,12 @@
-var mysql = require('mysql');
+const mysql = require("mysql");
+const { sqlUser, sqlPassword, sqlDbName } = require("../config/config");
 
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'nodeuser',
-    password : 'password',
-    database : 'surveypro'
+// getting the database credentials from env file and estabilishing connection
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: sqlUser,
+  password: sqlPassword,
+  database: sqlDbName,
 });
 
 module.exports = connection;

@@ -8,12 +8,9 @@ import Swal from 'sweetalert2';
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
-export class FormsComponent implements OnInit {
+export class FormsComponent {
 
   constructor(public authService: AuthService, public router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   about() {
     Swal.fire({
@@ -24,6 +21,7 @@ export class FormsComponent implements OnInit {
   }
 
   logout() {
+    // Clearing the token and redirecting user to login page.
     this.authService.logout();
     this.router.navigate(['/login']);
   }
